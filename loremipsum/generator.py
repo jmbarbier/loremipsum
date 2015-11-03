@@ -22,8 +22,10 @@ _SENTENCE_DELIMITERS = ['.', '?', '!']
 # "hello" with a comma next to it)
 _WORD_DELIMITERS = [','] + _SENTENCE_DELIMITERS
 
-_SAMPLE = resource_string(__name__, 'default/sample.txt')
-_DICTIONARY = resource_string(__name__, 'default/dictionary.txt').split()
+_SAMPLE = resource_string(__name__, 'default/sample.txt').decode(encoding='utf-8')
+_DICTIONARY = [s.decode(encoding='utf-8') for s in resource_string(__name__, 'default/dictionary.txt').split()]
+
+print(_DICTIONARY)
 
 _LOREM_IPSUM = 'lorem ipsum dolor sit amet, consecteteur adipiscing elit'
 
@@ -414,7 +416,8 @@ class Generator(object):
 
         # Finish the sentence off with capitalisation, a period and
         # form it into a string
-        sentence = ' '.join(words).capitalize().rstrip(word_delimiter) + '.'
+        sentence = ' '.join(words)
+        sentence = sentence.capitalize().rstrip(word_delimiter) + '.'
         return (1, len(words), sentence)
 
     def generate_sentences(self, amount, start_with_lorem=False):
