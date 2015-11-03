@@ -25,7 +25,6 @@ _WORD_DELIMITERS = [','] + _SENTENCE_DELIMITERS
 _SAMPLE = resource_string(__name__, 'default/sample.txt').decode(encoding='utf-8')
 _DICTIONARY = [s.decode(encoding='utf-8') for s in resource_string(__name__, 'default/dictionary.txt').split()]
 
-print(_DICTIONARY)
 
 _LOREM_IPSUM = 'lorem ipsum dolor sit amet, consecteteur adipiscing elit'
 
